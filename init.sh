@@ -11,5 +11,5 @@ new=$((new+2))
 max=21909
 for i in $(seq -w $last $new); do wget -q $LP/blk$i.dat >/dev/null && echo $i; done
 #wget -nH -e robots=off -nc -rl inf --no-remove-listing https://prunednode.today
-ls -t *.dat | head -1 > last.txt
+ls *.dat | sort -nr | head -1 > last.txt
 ls | grep -v '.dat$' | while read f; do echo "<a href=\"$f\">$f</a><br>"; done > index.html
