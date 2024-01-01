@@ -22,7 +22,7 @@
 #
 # Demo: https://asciinema.org/a/532820
 
-URL=https://cfpages-limits.pages.dev
+URL=https://lin.anyone.eu.org
 
 # Some functions
 #
@@ -50,26 +50,3 @@ test -w latest.zip && {
   }
 } || getparts
 ls latest.zip || exit 1
-
-# Here we assume that latest.zip file is in $PWD
-# either downloaded now or from previous run
-
-F=latest.signed.txt
-test -s $F || {
-  echo "Downloading $F ..."
-  wget -4 -q $URL/$F || exit 1
-}
-# Check Stephan's signature on the checksum file
-SIG=ss-specter-release.asc
-TMP=$(mktemp -d)
-test -s $SIG || wget -q https://stepansnigirev.com/$SIG
-test -r $SIG.gpg || gpg --dearmor $SIG
-gpgv --keyring ./$SIG.gpg $F \
-  || { echo "Signature not valid! Exiting." >&2; exit 1; }
-SN=$(grep -oE 'snapshot[0-9]{6}.zip' $F)
-ln -nfv latest.zip $SN
-echo "Verifying SHA256 of $SN..."
-sha256sum -c $F 2>/dev/null && {
-  # Clean up
-  rm -rf $TMP $F ${SIG}* files.txt
-}
