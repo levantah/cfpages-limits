@@ -1,8 +1,9 @@
 #!/bin/sh
 
 #touch latest.zip
-LP=linearized.pages.dev
-last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
+LP=linearizedb.pages.dev
+last=00149
+#$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
 for i in $(seq -w 00000 $last); do wget -q $LP/blk$i.dat >/dev/null && echo $i; done
 LP=lin.anyone.eu.org
 for i in $(seq -w $last 21909); do wget -q $LP/blk$i.dat >/dev/null && echo $i; done
