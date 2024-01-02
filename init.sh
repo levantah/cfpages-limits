@@ -1,19 +1,17 @@
 #!/bin/sh
 
-#touch latest.zip
-exit
 LP=https://linearizedb.pages.dev
 #last=00313
 last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
-for i in $(seq -w 00000 $last)
-do
-  wget -q $LP/blk$i.dat.gz >/dev/null && echo $i.gz
-done
+#for i in $(seq -w 00000 $last)
+#do
+#  wget -q $LP/blk$i.dat.gz >/dev/null && echo $i.gz
+#done
 
 ########################################
 LP=https://lin.anyone.eu.org
 new=$(echo $last | sed 's/^0\+//')
-new=$((new+2))
+new=$((new+10))
 max=21909
 echo Now the new ones until $new
 
