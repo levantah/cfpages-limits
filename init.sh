@@ -1,8 +1,7 @@
 #!/bin/sh
 
-ls
-echo "##################################################"
 #touch latest.zip
+exit
 LP=https://linearizedb.pages.dev
 #last=00313
 last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
