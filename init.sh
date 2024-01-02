@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ls
+echo "##################################################"
 #touch latest.zip
 LP=linearizedb.pages.dev
 #last=00313
