@@ -6,7 +6,7 @@ LP=linearizedb.pages.dev
 last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
 for i in $(seq -w 00000 $last)
 do
-  wget -q $LP/blk$i.dat >/dev/null && { gzip -9 $i; echo $i; }
+  wget -q $LP/blk$i.dat >/dev/null && { gzip -9 blk$i.dat; echo $i; }
 done
 LP=lin.anyone.eu.org
 new=$(echo $last | sed 's/^0\+//')
