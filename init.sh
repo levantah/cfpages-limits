@@ -15,9 +15,8 @@ new=$((new+10))
 max=21909
 echo Now the new ones until $new
 
-for i in $(seq -w $last $new)
+seq -w $last $new | sed 1d | while read i
 do
-  test -r blk$i.dat.gz && continue
   echo Downloading blk$i.dat.gz ...
   wget -q $LP/blk$i.dat.gz >/dev/null
 done
