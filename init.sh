@@ -2,8 +2,8 @@
 
 #touch latest.zip
 LP=linearizedb.pages.dev
-last=00313
-#last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
+#last=00313
+last=$(wget -qO - $LP/last.txt | grep -o '[0-9]\+')
 for i in $(seq -w 00000 $last)
 do
   wget -q $LP/blk$i.dat.gz >/dev/null && echo $i.gz
