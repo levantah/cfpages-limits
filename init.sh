@@ -18,6 +18,7 @@ echo Now the new ones until $new
 
 for i in $(seq -w $last $new)
 do
+  test -r blk$i.dat.gz && continue
   wget -q $LP/blk$i.dat.gz >/dev/null && echo $i.gz
 done
 
